@@ -21,7 +21,7 @@ contract WeiboAccount {
   //权限控制，被这个修饰符修饰的方法，表示改方法只能被微博所有者操作
   modifier onlyAdmin() {
     require(msg.sender==_adminAddress);
-    _;//?
+    _;//
   }
 //微博合约的构造方法
 function WeiboAccount() {
