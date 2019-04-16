@@ -50,7 +50,8 @@ function getLatestWeibo()constant returns (string weiboString,uint timestamp,uin
   timestamp=_weibos[_numberofWeibos-1].timestamp;
   numberofWeibos=_numberofWeibos;
 }
-//返回微博账户所有者
+
+//返回微博账户的所有者
 function getOwnerAddress()constant returns (address adminAdress) {
   return _adminAddress;
 }
@@ -74,5 +75,4 @@ event LogDonate(address indexed from ,uint256 _amount);
 function () payable {
   LogDonate(msg.sender, msg.value)
 }
-
 }
