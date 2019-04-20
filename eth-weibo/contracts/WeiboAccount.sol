@@ -43,9 +43,9 @@ function getWeibo(uint weiboId) constant returns (string weiboString,uint timest
   timestamp=_weibos[weiboId].timestamp;
 }
 
-//返回最新一条微博
+//返回最新一条的微博
 function getLatestWeibo()constant returns (string weiboString,uint timestamp,uint numberofWibo) {
-  //该函数返回三个变量
+  //该函数返回了三个变量
   weiboString=_weibos[_numberofWeibos-1].weiboString;
   timestamp=_weibos[_numberofWeibos-1].timestamp;
   numberofWeibos=_numberofWeibos;
