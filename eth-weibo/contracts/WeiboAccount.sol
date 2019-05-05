@@ -9,16 +9,16 @@ contract WeiboAccount {
     string weiboString;
   }
 
-  //这个微博账户的所有微博，微博ID映射微博内容
+  //定义这个微博账户的所有微博，微博ID映射微博内容
   mapping (uint => Weibo) _weibos;
 
-  //账户发的微博数量
+  //定义账户发的微博数量
   uint _numberofWeibos;
 
-  //微博账户的所有者
+  //定义微博账户的所有者
   address _adminAddress;
 
-  //权限控制，被这个修饰符修饰的方法，表示改方法只能被微博所有者操作
+  //定义权限控制，被这个修饰符修饰的方法，表示改方法只能被微博所有者操作
   modifier onlyAdmin() {
     require(msg.sender==_adminAddress);
     _;//
