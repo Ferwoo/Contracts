@@ -25,8 +25,11 @@ contract ERC20 {
     event Approval(address indexed _owner, address indexed _spender, uint _value);
 }
 /* 一个相对比较完善的代币合约 */
+
 pragma solidity ^0.4.16;
+
 /* 创建一个父类， 账户管理员 */
+
 contract owned {
 
     address public owner;
@@ -41,7 +44,7 @@ contract owned {
         _;
     }
 
-    /* 修改管理员账户， onlyOwner代表只能是用户管理员来修改 */
+    /* 修改管理员账户， onlyOwner代表只能由用户管理员来修改 */
     function transferOwnership(address newOwner) onlyOwner public {
         owner = newOwner;
     }   
