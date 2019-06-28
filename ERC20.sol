@@ -155,11 +155,11 @@ contract TokenERC20 {
     * 从其他账户销毁代币
     */
     function burnFrom(address _from, uint256 _value) public returns (bool success) {
-        require(balanceOf[_from] >= _value);                // Check if the targeted balance is enough
-        require(_value <= allowance[_from][msg.sender]);    // Check allowance
-        balanceOf[_from] -= _value;                         // Subtract from the targeted balance
+        require(balanceOf[_from] >= _value);                // Check if the targeted balance is enough 检查目标账户是否足够
+        require(_value <= allowance[_from][msg.sender]);    // Check allowance 
+        balanceOf[_from] -= _value;                         // Subtract from the targeted balance   从目标账户减额
         allowance[_from][msg.sender] -= _value;             // Subtract from the sender's allowance
-        totalSupply -= _value;                              // Update totalSupply
+        totalSupply -= _value;                              // Update totalSupply 
         Burn(_from, _value);
         return true;
     }
