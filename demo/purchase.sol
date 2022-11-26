@@ -4,7 +4,7 @@ contract Purchase {
     uint public value;
     address public seller;
     address public buyer;
-    enum State { Created, Locked, Inactive }
+    enum State {Created, Locked, Inactive}
     State public state;
 
     //确保 `msg.value` 是一个偶数。
@@ -52,9 +52,9 @@ contract Purchase {
     ///中止购买并回收以太币。
     ///只能在合约被锁定之前由卖家调用。
     function abort()
-        public
-        onlySeller
-        inState(State.Created)
+    public
+    onlySeller
+    inState(State.Created)
     {
         emit Aborted();
         state = State.Inactive;
@@ -65,10 +65,10 @@ contract Purchase {
     /// 交易必须包含 `2 * value` 个以太币。
     /// 以太币会被锁定，直到 confirmReceived 被调用。
     function confirmPurchase()
-        public
-        inState(State.Created)
-        condition(msg.value == (2 * value))
-        payable
+    public
+    inState(State.Created)
+    condition(msg.value == (2 * value))
+    payable
     {
         emit PurchaseConfirmed();
         buyer = msg.sender;
@@ -78,9 +78,9 @@ contract Purchase {
     /// 确认你（买家）已经收到商品。
     /// 这会释放被锁定的以太币。
     function confirmReceived()
-        public
-        onlyBuyer
-        inState(State.Locked)
+    public
+    onlyBuyer
+    inState(State.Locked)
     {
         emit ItemReceived();
         // 首先修改状态很重要，否则的话，由 `transfer` 所调用的合约可以回调进这里（再次接收以太币）。

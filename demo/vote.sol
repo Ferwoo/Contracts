@@ -1,6 +1,7 @@
 pragma solidity ^0.4.25;
-contract Ballot{
-  // 这里声明了一个新的复合类型用于稍后的变量
+
+contract Ballot {
+    // 这里声明了一个新的复合类型用于稍后的变量
     // 它用来表示一个选民
     struct Voter {
         uint weight; // 计票的权重
@@ -8,7 +9,7 @@ contract Ballot{
         address delegate; // 被委托人
         uint vote;   // 投票提案的索引
     }
- // 提案的类型
+    // 提案的类型
     struct Proposal {
         bytes32 name;   // 简称（最长32个字节）
         uint voteCount; // 得票数
@@ -32,9 +33,9 @@ contract Ballot{
             // `Proposal({...})` 创建一个临时 Proposal 对象，
             // `proposals.push(...)` 将其添加到 `proposals` 的末尾
             proposals.push(Proposal({
-                name: proposalNames[i],
-                voteCount: 0
-            }));
+                name : proposalNames[i],
+                voteCount : 0
+                }));
         }
     }
 
@@ -105,7 +106,7 @@ contract Ballot{
 
     /// @dev 结合之前所有的投票，计算出最终胜出的提案
     function winningProposal() public view
-            returns (uint winningProposal_)
+    returns (uint winningProposal_)
     {
         uint winningVoteCount = 0;
         for (uint p = 0; p < proposals.length; p++) {
@@ -118,7 +119,7 @@ contract Ballot{
 
     // 调用 winningProposal() 函数以获取提案数组中获胜者的索引，并以此返回获胜者的名称
     function winnerName() public view
-            returns (bytes32 winnerName_)
+    returns (bytes32 winnerName_)
     {
         winnerName_ = proposals[winningProposal()].name;
     }
